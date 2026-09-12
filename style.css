@@ -304,3 +304,77 @@ footer p {
     animation: none !important;
   }
 }
+/* ================================
+   TODO LIST
+================================ */
+
+#taskInput {
+  margin-bottom: 0.75rem;
+}
+
+#addTaskBtn {
+  margin-bottom: 1.5rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filters .filter-btn {
+  width: auto;
+  padding: 0.6rem 1rem;
+}
+
+.filters .filter-btn.active {
+  background: var(--primary-dark);
+}
+
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#taskList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+#taskList .task-text {
+  flex: 1;
+  word-break: break-word;
+}
+
+#taskList li.completed .task-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+#taskList .task-check {
+  width: auto;
+}
+
+#taskList .edit-btn,
+#taskList .delete-btn {
+  width: auto;
+  padding: 0.5rem 0.75rem;
+}
+
+@media (max-width: 600px) {
+  #taskList li {
+    flex-wrap: wrap;
+  }
+
+  #taskList .task-text {
+    min-width: 60%;
+  }
+}
