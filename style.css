@@ -378,3 +378,44 @@ footer p {
     min-width: 60%;
   }
 }
+/* ================================
+   WEATHER DASHBOARD
+================================ */
+
+#weatherForm {
+  max-width: 650px;
+}
+
+#status {
+  margin: 1.5rem 0;
+  font-weight: 700;
+}
+
+#weatherResult {
+  margin-top: 1.5rem;
+}
+
+.weather-card {
+  max-width: 650px;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.weather-card h3 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+.weather-card p {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.weather-card p:last-child {
+  border-bottom: none;
+}
