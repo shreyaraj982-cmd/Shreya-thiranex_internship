@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Weather Dashboard | Thiranex</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Weather Dashboard</h1>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+
+        <h2>Check Current Weather</h2>
+
+        <form id="weatherForm">
+
+          <div class="form-group">
+
+            <label for="cityInput">
+              Enter city name
+            </label>
+
+            <input
+              id="cityInput"
+              type="text"
+              placeholder="Example: Bengaluru"
+              required
+            >
+
+          </div>
+
+          <button type="submit">
+            Search Weather
+          </button>
+
+        </form>
+
+        <p
+          id="status"
+          role="status"
+          aria-live="polite">
+        </p>
+
+        <div id="weatherResult"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Thiranex Weather Dashboard</p>
+    </div>
+  </footer>
+
+  <script src="weather.js"></script>
+
+</body>
+
+</html>
