@@ -1,96 +1,381 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accessible, SEO-friendly example website with semantic HTML, ARIA support, and an accessible contact form.">
-  <meta name="keywords" content="accessible website, semantic HTML, SEO, ARIA, contact form">
-  <meta name="author" content="Accessible Web Example">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Accessible Web Example">
-  <meta property="og:description" content="A semantic and accessible website example.">
-  <meta property="og:type" content="website">
-  <title>Accessible Web Example | Semantic & SEO Friendly</title>
+  <meta name="description" content="ShopSmart - responsive e-commerce product catalog">
+  <title>ShopSmart | E-Commerce Catalog</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 6px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .hero {
+      background: white;
+      padding: 35px 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      border: 0;
+      padding: 11px 18px;
+      border-radius: 7px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .controls input,
+    .controls select {
+      padding: 11px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .product-icon {
+      font-size: 55px;
+      text-align: center;
+      padding: 15px;
+      background: #eef2ff;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .product h3 {
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 19px;
+      margin: 10px 0;
+    }
+
+    .cart {
+      font-weight: bold;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .info {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+      background: #111827;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 27px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header role="banner" aria-label="Site header">
-    <div class="container">
-      <h1>Accessible Web Example</h1>
-      <nav aria-label="Primary navigation">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<header>
+  <div class="nav">
+    <div class="logo">🛍️ ShopSmart</div>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <span class="cart">🛒 Cart: <span id="cartCount">0</span></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section id="home" class="page active">
+    <div class="hero">
+      <h1>Welcome to ShopSmart</h1>
+      <p>Discover quality products at simple and affordable prices.</p>
+      <a href="#products" class="button">Shop Now</a>
     </div>
-  </header>
+  </section>
 
-  <main id="main-content" tabindex="-1">
-    <section id="home" aria-labelledby="home-heading">
-      <div class="container">
-        <h2 id="home-heading">Welcome</h2>
-        <p>This example uses semantic HTML, ARIA labels, SEO-friendly metadata, and an accessible contact form.</p>
-      </div>
-    </section>
+  <section id="products" class="page">
+    <h1>Our Products</h1>
 
-    <section id="about" aria-labelledby="about-heading">
-      <div class="container">
-        <h2 id="about-heading">About</h2>
-        <p>Semantic elements make the page easier for people, search engines, and assistive technologies to understand.</p>
-      </div>
-    </section>
+    <div class="controls">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search products..."
+        aria-label="Search products"
+      >
 
-    <section id="services" aria-labelledby="services-heading">
-      <div class="container">
-        <h2 id="services-heading">Services</h2>
-        <article aria-labelledby="service-one">
-          <h3 id="service-one">Accessible Design</h3>
-          <p>Clear structure, keyboard navigation, labels, focus states, and screen-reader-friendly markup.</p>
-        </article>
-        <article aria-labelledby="service-two">
-          <h3 id="service-two">SEO Foundations</h3>
-          <p>Descriptive titles, meta descriptions, meaningful headings, and crawlable semantic content.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <h2 id="contact-heading">Contact Us</h2>
-        <form action="#" method="post" aria-describedby="form-help">
-          <p id="form-help">All fields marked with <span aria-hidden="true">*</span> are required.</p>
-
-          <div class="form-group">
-            <label for="name">Full name <span aria-hidden="true">*</span></label>
-            <input id="name" name="name" type="text" autocomplete="name" required aria-required="true">
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email address <span aria-hidden="true">*</span></label>
-            <input id="email" name="email" type="email" autocomplete="email" required aria-required="true">
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message <span aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" rows="6" required aria-required="true"></textarea>
-          </div>
-
-          <button type="submit" aria-label="Send contact message">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer role="contentinfo">
-    <div class="container">
-      <p>&copy; 2026 Accessible Web Example. All rights reserved.</p>
+      <select id="categoryFilter" aria-label="Filter products">
+        <option value="all">All Categories</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+        <option value="home">Home</option>
+      </select>
     </div>
-  </footer>
+
+    <div id="productList" class="products"></div>
+  </section>
+
+  <section id="about" class="page">
+    <div class="info">
+      <h1>About ShopSmart</h1>
+      <p>
+        ShopSmart is a responsive e-commerce catalog created as a
+        web development capstone project.
+      </p>
+      <p>
+        The application demonstrates client-side routing, dynamic
+        product rendering, searching, filtering and local data persistence.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="page">
+    <div class="info">
+      <h1>Contact Us</h1>
+      <p>Email: support@shopsmart.example</p>
+      <p>We are happy to help with your shopping experience.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 ShopSmart. All rights reserved.</p>
+</footer>
+
+<script>
+  const products = [
+    {
+      id: 1,
+      name: "Wireless Headphones",
+      price: 2499,
+      category: "electronics",
+      icon: "🎧"
+    },
+    {
+      id: 2,
+      name: "Smart Watch",
+      price: 3499,
+      category: "electronics",
+      icon: "⌚"
+    },
+    {
+      id: 3,
+      name: "Casual T-Shirt",
+      price: 799,
+      category: "fashion",
+      icon: "👕"
+    },
+    {
+      id: 4,
+      name: "Running Shoes",
+      price: 1999,
+      category: "fashion",
+      icon: "👟"
+    },
+    {
+      id: 5,
+      name: "Table Lamp",
+      price: 999,
+      category: "home",
+      icon: "💡"
+    },
+    {
+      id: 6,
+      name: "Coffee Mug",
+      price: 499,
+      category: "home",
+      icon: "☕"
+    }
+  ];
+
+  let cart = JSON.parse(localStorage.getItem("shopsmartCart")) || [];
+
+  const productList = document.getElementById("productList");
+  const searchInput = document.getElementById("searchInput");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const cartCount = document.getElementById("cartCount");
+
+  function renderProducts() {
+    const search = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+
+    const filtered = products.filter(product => {
+      const matchesSearch = product.name.toLowerCase().includes(search);
+      const matchesCategory =
+        category === "all" || product.category === category;
+
+      return matchesSearch && matchesCategory;
+    });
+
+    productList.innerHTML = filtered.map(product => `
+      <article class="product">
+        <div class="product-icon">${product.icon}</div>
+        <h3>${product.name}</h3>
+        <p>Category: ${product.category}</p>
+        <p class="price">₹${product.price.toLocaleString("en-IN")}</p>
+        <button class="button" onclick="addToCart(${product.id})">
+          Add to Cart
+        </button>
+      </article>
+    `).join("");
+
+    if (filtered.length === 0) {
+      productList.innerHTML = "<p>No products found.</p>";
+    }
+  }
+
+  function addToCart(id) {
+    cart.push(id);
+    localStorage.setItem("shopsmartCart", JSON.stringify(cart));
+    updateCart();
+  }
+
+  function updateCart() {
+    cartCount.textContent = cart.length;
+  }
+
+  function showPage() {
+    const page = location.hash.replace("#", "") || "home";
+
+    document.querySelectorAll(".page").forEach(section => {
+      section.classList.remove("active");
+    });
+
+    const selected = document.getElementById(page);
+    if (selected) {
+      selected.classList.add("active");
+    } else {
+      document.getElementById("home").classList.add("active");
+    }
+  }
+
+  searchInput.addEventListener("input", renderProducts);
+  categoryFilter.addEventListener("change", renderProducts);
+  window.addEventListener("hashchange", showPage);
+
+  renderProducts();
+  updateCart();
+  showPage();
+</script>
+
 </body>
 </html>
